@@ -1,0 +1,14 @@
+{
+  "name": "WS-server",
+  "version": "1.0.0",
+  "main": "server.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "query-string": "^6.13.8",
+    "ws": "^7.4.2"
+  }
+}
