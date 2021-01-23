@@ -41,16 +41,16 @@ yarn lint
 3. A user can only be connected to one room at a time
 4. Not verified against xss (checked after dev)
 
-##Time constraint disclosure
+## Time constraint disclosure
 I got a somewhat carried away with time, the following features were not ready on time (extra few hours):
 1. Messages styling (direction and coloring)
 2. Emoji buttons
 3. All animations
 4. reduced display for app header (@media in css)
-5. Style touchups
+5. Style touch-ups
 6. Overflow bug fixes
 
-##Known issues
+## Known issues
 1. Sending emoji creates error unicode characters when clicking the emojis buttons twice in a row in the same position
 2. WS does not work on phones, it still looks pretty though.
 3. Two users with the same username are able to login.
