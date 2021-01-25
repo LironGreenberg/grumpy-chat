@@ -15,6 +15,8 @@ const WSMessageTypes = {
     INCOMING_MESSAGE: 'incoming_message'
 }
 
+const SOCKET_PORT = 9999;
+
 function formatMessageTime(time = 0) {
     const dateObj = new Date(time);
     return `${('0' + dateObj.getHours()).slice(-2)}:${('0' + dateObj.getMinutes()).slice(-2)}`;
@@ -23,5 +25,6 @@ function formatMessageTime(time = 0) {
 export {
     generateRandomString,
     WSMessageTypes,
+    SOCKET_PORT,
     formatMessageTime,
 }

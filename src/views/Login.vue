@@ -69,6 +69,7 @@
         transition: background-color 0.2s;
         font-weight: bold;
         border: 2px solid cadetblue;
+        border-style: solid;
 
         &:hover {
             background-color: lightseagreen;

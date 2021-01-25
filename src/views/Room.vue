@@ -7,12 +7,7 @@
         </div>
         <div class="chat-area-container">
             <div class="grid-item connected-users-area">
-                <div class="connected-users-title">
-                    Grumpies in this room ({{ onlineUsers.length }})
-                </div>
-                <div class="connected-users-container">
-                    <user-display v-for="user in onlineUsers" :key="user" :name="user"></user-display>
-                </div>
+                <connected-users :onlineUsers="onlineUsers"></connected-users>
             </div>
             <div class="grid-item chat-area">
                 <chat-area :messages="messages"></chat-area>
@@ -38,8 +33,8 @@
     import { mapGetters } from "vuex";
     import TextEditor from "@/components/Room/TextEditor";
     import ChatArea from "@/components/Room/ChatArea";
-    import UserDisplay from "@/components/Room/UserDisplay";
-    import { WSMessageTypes } from "@/assets/utils.js";
+    import ConnectedUsers from "@/components/Room/ConnectedUsers";
+    import { WSMessageTypes, SOCKET_PORT } from "@/assets/utils.js";
 
 
     export default {
@@ -49,7 +44,7 @@
         components: {
             TextEditor,
             ChatArea,
-            UserDisplay
+            ConnectedUsers
         },
         computed: {
             ...mapGetters(['getUserName']),
@@ -86,7 +81,7 @@
                 if (this.ws) {
                     this.ws.onerror = this.ws.onopen = this.ws.onclose = null;
                 }
-                this.ws = new WebSocket('ws://localhost:9999/?roomId=' + this.id + '&userId=' + this.getUserName);
+                this.ws = new WebSocket(`ws://localhost:${SOCKET_PORT}/?roomId=${this.id}'&userId=${this.getUserName}`);
                 this.ws.onopen = () => {
                     console.log('Connection opened for room ' + this.id);
                 }
@@ -136,46 +131,61 @@
             row-gap: 5px;
             column-gap: 5px;
 
+            grid-template:
+                "connnected chat-area" 3fr
+                "connnected emoji-bar" min-content
+                "connnected text-editor" 1fr
+                    / min-content 1fr;
+
+                /*"chat-area connnected" 1fr 1fr 1fr*/
+                /*"chat-area emoji-bar" 1fr;*/
+                /*"chat-area text-editor" 1fr 1fr ;*/
+
+
             .grid-item {
                 border: 1px solid #BBB;
                 border-radius: 5px;
             }
 
             .connected-users-area {
+                grid-area: connnected;
                 position: relative;
                 grid-row: 1 / span 3;
                 background-color: rgba(255, 255, 255, 0.9);
                 overflow: hidden;
+                resize: horizontal;
+            }
 
-                .connected-users-container {
-                    position: absolute;
-                    width: 100%;
-                    height: calc(100% - 50px);
-                    overflow: auto;
-                }
-
-                .connected-users-title {
-                    margin: 5px;
-                    height: 50px;
-                    border-bottom: 1px dashed #42b983;
-                }
+            .chat-area {
+                grid-area: chat-area;
+                /*resize: vertical;*/
             }
 
             .emoji-bar {
+                grid-area: emoji-bar;
                 min-width: 140px;
                 display: flex;
                 flex-wrap: wrap;
 
                 .emoji {
+                    margin-top: 1px; // account for hover
+                    padding: 0 7px 0 8px; // account for border
                     vertical-align: middle;
                     border: 1px solid transparent;
+                    border-right: 1px double #42b983;
                     background-color: transparent;
 
                     &:hover {
+                        position: relative;
+                        bottom: 1px;
                         background-color: white;
                         transition: background-color 0.2s;
                     }
                 }
+            }
+
+            .text-editor-container {
+                grid-area: text-editor;
             }
         }
     }
