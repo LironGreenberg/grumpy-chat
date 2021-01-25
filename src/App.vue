@@ -1,10 +1,6 @@
 <template>
   <div id="app">
     <app-header></app-header>
-<!--    <div id="nav">-->
-<!--      <router-link to="/">Login</router-link> |-->
-<!--      <router-link to="/rooms">Rooms</router-link>-->
-<!--    </div>-->
     <router-view class="view"/>
   </div>
 </template>

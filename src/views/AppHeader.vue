@@ -44,7 +44,7 @@
 
         .title {
             display: flex;
-            min-width: 350px;
+            min-width: 300px;
 
             .logo {
                 width: 100px;

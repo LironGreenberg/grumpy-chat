@@ -97,7 +97,7 @@
             }
 
             .bubble-title {
-                min-width: 150px;
+                min-width: 85px;
                 display: flex;
                 justify-content: space-between;
                 overflow: hidden;

@@ -73,9 +73,7 @@
             &:hover {
                 background-color: lightseagreen;
             }
-        }
 
-        .btn-send {
             &:disabled {
                 background-color: darkslategrey;
                 color: #cccccc;

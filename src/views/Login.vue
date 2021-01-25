@@ -73,6 +73,11 @@
         &:hover {
             background-color: lightseagreen;
         }
+
+        &:disabled {
+            background-color: darkslategrey;
+            color: #cccccc;
+        }
     }
 
     .btn-login, .username-input {

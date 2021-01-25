@@ -86,6 +86,11 @@
         &:hover {
             background-color: lightseagreen;
         }
+
+        &:disabled {
+            background-color: darkslategrey;
+            color: #cccccc;
+        }
     }
 
     .btn-go, .roomId-input {
